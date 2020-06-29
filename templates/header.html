@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="utf-8">
+	<title>HashIn</title>
+	{% load static %}
+	<link rel="icon" href="{% static "/images/png/logo.png" %}" type="image/png">
+	{% load static %}
+	<link rel="stylesheet" href="{% static "/css/header.css" %}">
+</head>
+
+<body>
+	<header>
+		{% load static %}
+		<img src="{% static "/images/svg/logo.svg" %}" class="lgimg">
+		<button class="lname frstprt btn-menu"><a href="/" style="color: black;">Hash</a></button>
+		<button class="lname scndprt btn-menu"><a href="/">in</a></button>
+		<div class="menu-item-container first-menu-item-cont" id="problem-container">
+			<button class="menu-item first-menu-item btn-menu"><span style="color: rgb(241, 93, 113);">P</span>roblem
+				<span style="color: rgb(241, 93, 113);">S</span>olving<span class="menu-item-after"
+					id="problem-item-after">&#9662;</span></button>
+			<ul class="problem-dropdown" id="problem-dropdown">
+				<li class="li-menu-items first-li-menu-item li-problem"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Compete</button></li>
+				<li class="li-menu-items li-problem"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Custom Test</button></li>
+				<li class="li-menu-items li-problem"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Practice</button></li>
+				<li class="li-menu-items li-problem"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Problems</button></li>
+				<li class="li-menu-items li-problem"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Administration</button></li>
+				<li class="li-menu-items last-li-menu-item li-problem"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Rankings</button></li>
+			</ul>
+		</div>
+		<div class="menu-item-container" id="computing-container">
+			<button class="menu-item btn-menu"><span style="color: rgb(241, 93, 113);">C</span>omputing<span
+					class="menu-item-after">&#9662;</span></button>
+			<ul class="computing-dropdown" id="computing-dropdown">
+				<li class="li-menu-items first-li-menu-item li-computing"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Mathematics</button></li>
+				<li class="li-menu-items li-computing"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Biology</button></li>
+				<li class="li-menu-items last-li-menu-item li-computing"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Physics</a></li>
+			</ul>
+		</div>
+		<div class="menu-item-container" id="linux-container">
+			<button class="menu-item btn-menu"><span style="color: rgb(241, 93, 113);">L</span>inux<span
+					class="menu-item-after">&#9662;</span></button>
+			<ul class="linux-dropdown" id="linux-dropdown">
+				<li class="li-menu-items first-li-menu-item li-linux"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Terminal</button></li>
+				<li class="li-menu-items last-li-menu-item li-linux"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Administration</button></li>
+			</ul>
+		</div>
+		<div class="menu-item-container" id="crypto-container">
+			<button class="menu-item btn-menu"><span style="color: rgb(241, 93, 113);">C</span>ryptography<span
+					class="menu-item-after">&#9662;</span></button>
+			<ul class="crypto-dropdown" id="crypto-dropdown">
+				<li class="li-menu-items first-li-menu-item li-crypto"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Hacking</button></li>
+				<li class="li-menu-items first-li-menu-item li-crypto"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Algebra</button></li>
+				<li class="li-menu-items first-li-menu-item li-crypto"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Hacking Tools</button></li>
+				<li class="li-menu-items last-li-menu-item li-crypto"><button class="corres-li-menu-text"
+						onclick="location.href='#';">Crypto Theory</button></li>
+			</ul>
+		</div>
+	</header>
+</body>
+
+<script src="{% static "/js/header.js" %}"></script>
+
+</html>

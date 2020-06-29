@@ -1,0 +1,103 @@
+header{
+	margin-top: -1%;
+	margin-left: -1%;
+	margin-right: -0.5%;
+	display: flex;
+	flex-direction: row;
+	border-bottom: 0.1px solid grey;
+	align-content: center;
+	height: 90px;
+	background-color: rgb(240, 243, 247);
+}
+
+.btn-menu{
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.lgimg{
+	margin-left: 2%;
+	height: 40px;
+	align-self: center;
+}
+
+.lname{
+	margin-left: 1%;
+	font-size: 200%;
+	align-self: center;
+	outline: none;
+}
+
+.scndprt{
+	margin-left: 0%;
+	color: rgb(241, 93, 113);
+	border: 2px black solid;
+	border-radius: 8px;
+}
+
+.menu-item{
+	font-size: 100%;
+	font-weight: 600;
+	color: rgb(78, 75, 75);
+}
+
+.menu-item-container{
+	margin-top: 2%;
+	display: flex;
+	flex-direction: column;
+	margin-left: 4%;
+	padding-top: 10px;
+}
+
+.first-menu-item-cont{
+	margin-left: 10%;
+}
+
+ul{
+	list-style: none;
+}
+
+.problem-dropdown, .computing-dropdown, .linux-dropdown, .crypto-dropdown{
+	visibility: hidden;
+	border: 1px solid white;
+	border-radius: 6px;
+	box-shadow: 0px 3px 10px black;
+	background-color: white;
+	width: 100px;
+}
+
+.li-menu-items{
+	padding-top: 10px;
+	text-align: center;
+	padding-bottom: 10px;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border-radius: 6px;
+	margin-left: -40px;
+}
+
+.last-li-menu-item{
+	margin-bottom: calc(-2% + 2px);
+}
+
+a{
+	color: rgb(241, 93, 113);
+	text-decoration: none;
+}
+
+.li-menu-items:hover{
+	background-color: rgb(241, 93, 113);
+}
+
+.corres-li-menu-text{
+	font-size: 100%;
+	font-weight: 600;
+	border: none;
+	background-color: transparent;
+	outline: none;
+	cursor: pointer;
+	color: rgb(241, 93, 113);
+	text-decoration: none;
+}
