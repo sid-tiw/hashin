@@ -124,4 +124,5 @@ STATICFILES_DIRS = [
     ('css', './templates/css'),
     ('js', './templates/js'),
     ('images', './templates/images'),
+    ('user_default_images', './templates/user-default-images'),
 ]

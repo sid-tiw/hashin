@@ -71,7 +71,26 @@
 						onclick="location.href='#';">Crypto Theory</button></li>
 			</ul>
 		</div>
+		<div class="user-status">
+			{% if authenticated %}
+			<div class="user_image_container" style="display: block;">
+				<img {{ img_link }} width="40px" class="user_image">
+			</div>
+			<div style="display: inline;">
+				Hello, {{ username }} !
+			</div>
+			{% else %}
+			<div class="user_image_container" style="display: block;">
+				<img {{ img_link }} width="40px" class="user_image">
+			</div>
+			<div style="display: inline;">
+				<button class="login-button button-user" onclick="location.href='/login'">Login</button>|<!--
+				--><button class="register-button button-user" onclick="location.href='/register'">Register</button>
+			</div>
+			{% endif %}
+		</div>
 	</header>
+	{% block body %}{% endblock %}
 </body>
 
 <script src="{% static "/js/header.js" %}"></script>
