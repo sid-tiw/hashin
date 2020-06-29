@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: rgb(240, 243, 247);
+}
+
+.box {
+    width: 400px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 2px 10px 1px black;
+    border-radius: 9px;
+}
+
+.box h2 {
+    color: black;
+    font-weight: 600;
+}
+
+h2{
+    margin-top: -2%;
+    padding-bottom: 2%;
+}
+
+.box input[type="text"], .box input[type="password"], .box input[type="email"]{
+    border: 0;
+    background: none;
+    margin-left: calc(47% - 110px);
+    margin-top: 2%;
+    text-align: center;
+    border: 2px solid black;
+    padding: 14px 10px;
+    width: 220px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box input[type="email"]:focus, .box input[type="text"]:focus, .box input[type="password"]:focus {
+    width: 260px;
+    border-color: rgb(241, 93, 113);
+    margin-left: calc(47% - 130px);
+}
+
+.box input[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin-left: calc(50% - 140px);
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 10px;
+    margin-top: 24px;
+    width: 280px;
+    outline: none;
+    color: #2ecc71;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.box input[type="submit"]:hover {
+    background: #2ecc71;
+    color: white;
+}
+
+.frstprt, .scndprt{
+	margin-left: 1%;
+	font-size: 200%;
+	align-self: center;
+    outline: none;
+    background-color: transparent;
+	border: none;
+	outline: none;
+    cursor: pointer;
+}
+
+.scndprt{
+	margin-left: -5px;
+	color: rgb(241, 93, 113);
+	border: 2px black solid;
+	border-radius: 8px;
+}
+
+a{
+    color: rgb(241, 93, 113);
+	text-decoration: none;
+}
+
+.logo{
+    display: block;
+    text-align: center;
+    margin-top: 2%;
+}
