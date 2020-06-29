@@ -5,6 +5,8 @@ from .forms import CreateUserForm, loginform, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
+
+
 def registerPage(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -51,4 +53,4 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('login')
+    return redirect('home')

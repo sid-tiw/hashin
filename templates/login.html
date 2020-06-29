@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	{% load static %}
 	<link rel="icon" href="{% static "/images/png/logo.png" %}" type="image/png">
-	<title>Register</title>
+	<title>Login</title>
 	{% load static %}
 	<link rel="stylesheet" href="{% static "/css/login.css" %}">
 </head>
@@ -15,7 +15,7 @@
 		<button class="frstprt"><a href="/" style="color: black;">Hash</a></button>
 		<button class="scndprt"><a href="/" style="color: rgb(241, 93, 113)">in</a></button>
 	</div>
-	<form class="box" action="/register/" method="POST">
+	<form class="box" action="/login/" method="POST">
 		{% csrf_token %}
 		<h2>Login</h2>
 		{{form.username}}
