@@ -3,8 +3,44 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .forms import CreateUserForm, loginform, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+# import mysql.connector
 
-# Create your views here.
+# relations = {}
+# relations['user'] = (
+#     "CREATE TABLE IF NOT EXISTS `user` ("
+#     "   `username` char(100) NOT NULL,"
+#     "   `fname` char(200),"
+#     "   `sname` char(200),"
+#     "   `password` char(35) NOT NULL,"
+#     "   `ratings` INT,"
+#     "   `createdon` DATE,"
+#     "   `gender` char"
+#     ")"
+# )
+
+# relations['contest'] = (
+#     "CREATE TABLE IF NOT EXISTS `contest` ("
+#     "   `contest_ID` char(100) NOT NULL,"
+#     "   `number_of_questions` INT,"
+#     "   `problem_codes` JSON,"
+#     "   `contest_rating` INT,"
+#     "   `contest_date` DATE"
+#     ")"
+# )
+
+
+# def connect_mysql():
+#     new_connection = mysql.connector.connect(
+#         user="root", password="int", host='127.0.0.1')
+#     new_connection._execute_query(
+#         'CREATE DATABASE IF NOT EXISTS hashin CHARACTER SET utf8;')
+#     new_connection._execute_query(
+#         'USE hashin;'
+#     )
+#     new_connection._execute_query(
+#         'CREATE TABLE IF NOT EXISTS user (username VARCHAR(100) PRIMARY KEY, fname VARCHAR(200), sname VARCHAR(200), password VARCHAR(), ratings INT;'
+#     )
+#     return new_connection
 
 
 def registerPage(request):
@@ -12,6 +48,7 @@ def registerPage(request):
         return redirect('home')
     else:
         if request.method == 'POST':
+            # new_connection = connect_mysql()
             temp = request.POST
             print(temp)
             username = temp.get('username')
