@@ -2,6 +2,9 @@ from smtplib import SMTP, SMTP_SSL
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from django.utils.safestring import SafeString
+import string
+import random
+import hashlib
 
 
 def verify_email_generate(user):
@@ -41,4 +44,14 @@ def verify_email_generate(user):
 
 
 def gen_sec_token(user):
-    print(1)
+    password = user['password']
+    username = user['name']
+    email = user['email']
+    hash_text = b""
+    hash_text += password + "----" + username + "----" + email + "----" + randomString()
+    return hashlib.sha256(hash_text).hexdigest()
+
+
+def randomString(stringLength=10):
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
