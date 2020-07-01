@@ -1,0 +1,3 @@
+Hello --name--,
+Welcome to HashIn!
+Verify your account by visiting this link: --link--
