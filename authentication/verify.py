@@ -21,7 +21,8 @@ def verify_email_generate(user):
     text_file = open("message.txt", "r").read()
 
     link = "http://localhost:8000/register?verify=true&sec_token="
-    link += gen_sec_token(user)
+    sec_token = gen_sec_token(user)
+    link += sec_token
 
     var1 = '--link--'
     var2 = '--name--'
@@ -41,14 +42,17 @@ def verify_email_generate(user):
         smtp.login("hashin.team@gmail.com", "*******")
         smtp.sendmail(hashin_mail,
                       user_mail, message.as_string())
+    return sec_token
 
 
 def gen_sec_token(user):
     password = user['password']
-    username = user['name']
+    username = user['username']
     email = user['email']
-    hash_text = b""
-    hash_text += password + "----" + username + "----" + email + "----" + randomString()
+    hash_text = ""
+    hash_text += password + "----" + username + \
+        "----" + email + "----" + randomString()
+    hash_text = hash_text.encode('utf-8')
     return hashlib.sha256(hash_text).hexdigest()
 
 
