@@ -81,7 +81,7 @@ update_queries['gender'] = (
 
 def connect_mysql():
     new_connection = mysql.connector.connect(
-        user="root", password="int", host='127.0.0.1')
+        user="root", password="long", host='127.0.0.1')
     cursor = new_connection.cursor(dictionary=True)
     cursor.execute(
         'CREATE DATABASE IF NOT EXISTS hashin CHARACTER SET utf8;')

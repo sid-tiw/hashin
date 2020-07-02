@@ -8,6 +8,8 @@
 	<link rel="icon" href="{% static "/images/png/logo.png" %}" type="image/png">
 	{% load static %}
 	<link rel="stylesheet" href="{% static "/css/header.css" %}">
+	{% load static %}
+	<link rel="stylesheet" href="{% static "/css/ucard.css" %}">
 </head>
 
 <body>
@@ -73,9 +75,6 @@
 		</div>
 		<div class="user-status">
 			{% if authenticated %}
-			<div class="user_image_container" style="display: block;">
-				<img {{ img_link }} width="40px" class="user_image">
-			</div>
 			<div style="display: inline;">
 				Hello, {{ username }} !
 			</div>
@@ -91,7 +90,8 @@
 			{% endif %}
 		</div>
 	</header>
-	{% block body %}{% endblock %}
+	{% block body %}
+	{% endblock %}
 </body>
 
 <script src="{% static "/js/header.js" %}"></script>

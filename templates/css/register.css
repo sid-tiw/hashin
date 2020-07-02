@@ -25,12 +25,14 @@ body {
     font-weight: 600;
 }
 
-h2{
+h2 {
     margin-top: -2%;
     padding-bottom: 2%;
 }
 
-.box input[type="text"], .box input[type="password"], .box input[type="email"]{
+.box input[type="text"],
+.box input[type="password"],
+.box input[type="email"] {
     border: 0;
     background: none;
     margin-left: calc(47% - 110px);
@@ -45,7 +47,9 @@ h2{
     transition: 0.25s;
 }
 
-.box input[type="email"]:focus, .box input[type="text"]:focus, .box input[type="password"]:focus {
+.box input[type="email"]:focus,
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
     width: 260px;
     border-color: rgb(241, 93, 113);
     margin-left: calc(47% - 130px);
@@ -74,30 +78,31 @@ h2{
     color: white;
 }
 
-.frstprt, .scndprt{
-	margin-left: 1%;
-	font-size: 200%;
-	align-self: center;
+.frstprt,
+.scndprt {
+    margin-left: 1%;
+    font-size: 200%;
+    align-self: center;
     outline: none;
     background-color: transparent;
-	border: none;
-	outline: none;
+    border: none;
+    outline: none;
     cursor: pointer;
 }
 
-.scndprt{
-	margin-left: -5px;
-	color: rgb(241, 93, 113);
-	border: 2px black solid;
-	border-radius: 8px;
-}
-
-a{
+.scndprt {
+    margin-left: -5px;
     color: rgb(241, 93, 113);
-	text-decoration: none;
+    border: 2px black solid;
+    border-radius: 8px;
 }
 
-.logo{
+a {
+    color: rgb(241, 93, 113);
+    text-decoration: none;
+}
+
+.logo {
     display: block;
     text-align: center;
     margin-top: 2%;

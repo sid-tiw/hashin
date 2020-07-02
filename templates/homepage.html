@@ -1,4 +1,15 @@
 {% extends "header.html" %}
 {% block body %}
 <h1>This is a heading</h1>
+<div class = "user-card">
+	{% if authenticated%}
+		<div class= "card-body">
+            <div class="user_image_container" style="display: block;">
+			    <img {{ img_link }} width="40px" class="user_image">
+		    </div>
+            <h1>{{ username}}</h1>
+            <h2>{{ ratings }}</h2>
+		</div>
+    {% endif %}
+</div>
 {% endblock %}
