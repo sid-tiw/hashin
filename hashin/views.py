@@ -23,3 +23,9 @@ def init_login(request):
 
 def homepage(request):
     return render(request, "homepage.html", init_login(request))
+
+
+def submit(request):
+    # dict_get = request.GET
+    # if "pcode" in dict_get.keys():
+    return render(request, "submit.html", init_login(request))

@@ -1,0 +1,76 @@
+.edtor {
+	margin-left: 5%;
+	margin-top: 5%;
+	display: grid;
+	grid-template-columns: repeat(10, 7%);
+	grid-row-gap: 0;
+	grid-auto-rows: minmax(55px, auto);
+}
+
+.hdredtr {
+	display: block;
+	border: 1px solid;
+	border-radius: 8px 8px 0px 0px;
+	background-color: rgb(212, 222, 235);
+	grid-column: 1 / 11;
+	grid-row: 1/2;
+}
+
+.maed {
+	font-size: large;
+	font-family: monospace;
+	resize: none;
+	outline: none;
+	border: 1px solid;
+	border-radius: 0px 0px 7px 0px;
+	border-left: none;
+	white-space: nowrap;
+	grid-column: 2 / 11;
+	grid-row: 2 / 10;
+}
+
+.maed::selection {
+	color: white;
+	background-color: green;
+}
+
+.maed::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background-color: rgb(218, 216, 216);
+	border-radius: 8px 0px 8px 8px;
+}
+
+.maed::-webkit-scrollbar-thumb {
+	background: rgb(126, 122, 122);
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.lnnum {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid;
+	text-align: center;
+	outline: none;
+	resize: none;
+	background-color: rgb(212, 222, 235);
+	cursor: default;
+	font-size: large;
+	font-family: monospace;
+	border-radius: 0px 0px 0px 8px;
+	overflow: hidden;
+	grid-column: 1 / 2;
+	grid-row: 2 / 10;
+}
+
+.lnnum::-webkit-scrollbar {
+	width: 0px;
+}
+
+.lnnum::selection {
+	color: none;
+	background: none;
+}
