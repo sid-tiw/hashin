@@ -66,15 +66,31 @@ function beforeinput_listener(event) {
 	if (current_element == null)
 		current_element = ranges.startContainer.parentElement;
 	let curr_wrd = search_words(current_element.id);
+	let next_wrd = words[curr_wrd + 1];
 	let t_st = sel_obj.getRangeAt(0).startContainer.nodeValue;
 	let t_no = sel_obj.getRangeAt(0).startOffset;
 	if (data == " " || data == "\t") {
 		let lent = "wrd" + (words.length + 1).toString();
 		let place_text = "&nbsp;";
-		if (data == "\t")
+		let off_val = 1;
+		if (data == "\t") {
 			place_text = "&nbsp;&nbsp;&nbsp;&nbsp";
+			off_val = 4;
+		}
 		if (t_st != null) {
-			
+			let prt1 = t_st.substring(0, t_no);
+			let prt2 = place_text + t_st.substring(t_no);
+			current_element.innerHTML = prt1;
+			let temp_word = create_node(lent, prt2);
+			maed.insertBefore(temp_word, next_wrd);
+			words.splice(curr_wrd + 1, 0, temp_word);
+			current_element = document.getElementById(lent);
+			let st_nd = current_element.childNodes[0];
+			let t_range = document.createRange();
+			t_range.setStart(st_nd, off_val);
+			t_range.setEnd(st_nd, off_val);
+			sel_obj.removeAllRanges();
+			sel_obj.addRange(t_range);
 		} else {
 			let temp_word = create_node(lent, place_text);
 			maed.appendChild(temp_word);
