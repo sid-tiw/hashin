@@ -23,32 +23,20 @@
 	resize: none;
 	outline: none;
 	border: 1px solid;
-	border-radius: 0px 0px 7px 0px;
+	border-radius: 0px 0px 0px 0px;
 	border-left: none;
 	white-space: nowrap;
 	grid-column: 2 / 11;
 	grid-row: 2 / 10;
 	vertical-align: top;
+	height: 440px;
+	width: calc(100% - 1px);
+	overflow: auto;
 }
 
 .maed::selection {
 	color: white;
 	background-color: green;
-}
-
-.maed::-webkit-scrollbar {
-	width: 8px;
-	height: 8px;
-	background-color: rgb(218, 216, 216);
-	border-radius: 8px 0px 8px 8px;
-}
-
-.maed::-webkit-scrollbar-thumb {
-	background: rgb(126, 122, 122);
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
 }
 
 .lnnum {
@@ -82,4 +70,9 @@
 	background-color: transparent;
 	border: none;
 	outline: none;
+}
+
+.words::selection{
+	color: white;
+	background-color: green;
 }

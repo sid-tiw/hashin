@@ -4,6 +4,10 @@ var num_of_line = 0;
 var maed = document.getElementById("maed");
 var lnnum = document.getElementById("lnnum");
 
+var control_down = false;
+var control_key = 17;
+var mac_control = 91;
+
 class customInput {
 	constructor(data, inputType, ranges) {
 		this.data = data;
@@ -25,11 +29,13 @@ var words = [];
 function create_node(id, str) {
 	let tem = document.createElement("div");
 	tem.id = id;
+	tem.className = "words";
 	tem.style.color = "rgb(241, 28, 28)";
 	tem.style.display = "inline";
 	tem.style.outline = "none";
 	tem.contentEditable = "true";
 	tem.innerHTML = str;
+	tem.style.whiteSpace = "pre";
 	return tem;
 }
 
@@ -50,15 +56,46 @@ function keydown_listener(event) {
 		event.stopPropagation();
 		let st_nd = sel_obj.getRangeAt(0);
 		console.log(st_nd);
-		var evnt = new customInput("\t", "insertTab", [st_nd]);
+		var evnt = new customInput("\t", "insertText", [st_nd]);
 		beforeinput_listener(evnt);
 	}
+}
+
+function key_up(event) {
+	if (event.keyCode == control_key || event.keyCode == mac_control)
+		control_down = false;
 }
 
 function beforeinput_listener(event) {
 	event.stopPropagation();
 	event.preventDefault();
+	if (event.inputType == "insertText" || event.inputType == "insertParagraph") {
+		insert_text(event);
+	}
+	else{
+		let str = event.dataTransfer.getData("text");
+		for(let i=0;i<str.length;i++){
+			if(str.charCodeAt(i) == 10) {
+				let st_nd = sel_obj.getRangeAt(0);
+				var evnt = new customInput("<br>", "insertParagraph", [st_nd]);
+				insert_text(evnt);
+			}
+			else if(str.charCodeAt(i) == 13) {}
+			else {
+				let st_nd = sel_obj.getRangeAt(0);
+				var evnt = new customInput(str.charAt(i), "insertText", [st_nd]);
+				insert_text(evnt);
+			}
+		}
+		console.log();
+	}
+}
+
+
+function insert_text(event) {
 	let data = event.data;
+	if (event.inputType == "insertParagraph")
+		data = "<br>";
 	let ranges = event.getTargetRanges()[0];
 	let current_element = document.getElementById(ranges.startContainer.id);
 	if (ranges.startContainer.id == "maed")
@@ -69,7 +106,7 @@ function beforeinput_listener(event) {
 	let next_wrd = words[curr_wrd + 1];
 	let t_st = sel_obj.getRangeAt(0).startContainer.nodeValue;
 	let t_no = sel_obj.getRangeAt(0).startOffset;
-	if (data == " " || data == "\t") {
+	if (data == " " || data == "\t" || data == "<br>") {
 		let lent = "wrd" + (words.length + 1).toString();
 		let place_text = "&nbsp;";
 		let off_val = 1;
@@ -77,10 +114,15 @@ function beforeinput_listener(event) {
 			place_text = "&nbsp;&nbsp;&nbsp;&nbsp";
 			off_val = 4;
 		}
+		if (data == "<br>") {
+			place_text = "&#10;&#13;";
+			off_val = 1;
+		}
 		if (t_st != null) {
 			let prt1 = t_st.substring(0, t_no);
 			let prt2 = place_text + t_st.substring(t_no);
 			current_element.innerHTML = prt1;
+			console.log(prt1 + "\n" + prt2);
 			let temp_word = create_node(lent, prt2);
 			maed.insertBefore(temp_word, next_wrd);
 			words.splice(curr_wrd + 1, 0, temp_word);
@@ -114,15 +156,11 @@ function beforeinput_listener(event) {
 			sel_obj.collapse(current_element, 1);
 		}
 	}
-	// } else {
-	// 	console.log("Where I don't want it!");
-	// 	if (data == " ") {} else {
-	// 		wrd1.textContent += data;
-	// 		sel_obj.collapse(wrd1, 1);
-	// 	}
-	// }
 }
 
+function delete_text(event) {
+
+}
 
 function search_words(str) {
 	for (let i = 0; i < words.length; i++)
