@@ -73,7 +73,11 @@ function beforeinput_listener(event) {
 		insert_text(event);
 	}
 	else{
-		let str = event.dataTransfer.getData("text");
+		try {
+			let str = event.dataTransfer.getData("text");	
+		} catch (error) {
+			return;
+		}
 		for(let i=0;i<str.length;i++){
 			if(str.charCodeAt(i) == 10) {
 				let st_nd = sel_obj.getRangeAt(0);
@@ -122,6 +126,7 @@ function insert_text(event) {
 			let prt1 = t_st.substring(0, t_no);
 			let prt2 = place_text + t_st.substring(t_no);
 			current_element.innerHTML = prt1;
+			prt2 = prt2.replace("&#10;&#13;", "\n");
 			console.log(prt1 + "\n" + prt2);
 			let temp_word = create_node(lent, prt2);
 			maed.insertBefore(temp_word, next_wrd);
