@@ -3,15 +3,15 @@
 
 {% load static %}
 <link rel="stylesheet" href="{% static "/css/submit.css" %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css">
 <div class="edtor">
 	<div class="hdredtr" id="hdredtr"></div>
 	<div readonly draggable="false" class="lnnum" id="lnnum">
 		<button class="b1">1</button>
-		<button class="b2">2</button>
-		<button class="b3">3</button>
-	</div><textarea class="maed" id="maed">print("Hello, World!)</textarea>
+	</div>
+	<div class="maed" id="maed" spellcheck="false" contenteditable="true"></div>
 </div>
-
+<button type="submit" class="sbmt-code" id="sbmt-code">Submit</button>
 {% load static %}
 <script src="{% static "/js/submit.js" %}"> </script>
 {% endblock %}
