@@ -65,14 +65,24 @@
 	background: none;
 }
 
-.b1{
+.b1 {
 	font-size: large;
 	background-color: transparent;
 	border: none;
 	outline: none;
 }
 
-.words::selection{
+.words::selection {
 	color: white;
 	background-color: green;
+}
+
+.words {
+	font-family: 'Fira Code', monospace;
+}
+
+@supports (font-variation-settings: normal) {
+	.words {
+		font-family: 'Fira Code', monospace;
+	}
 }

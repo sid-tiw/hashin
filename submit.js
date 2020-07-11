@@ -55,7 +55,6 @@ function keydown_listener(event) {
 		event.preventDefault();
 		event.stopPropagation();
 		let st_nd = sel_obj.getRangeAt(0);
-		console.log(st_nd);
 		var evnt = new customInput("\t", "insertText", [st_nd]);
 		beforeinput_listener(evnt);
 	}
@@ -120,12 +119,11 @@ function insert_text(event) {
 			place_text = "&#10;&#13;";
 			off_val = 1;
 		}
-		if (t_st != null) {
+		if (t_st != null && ranges.endOffset != ranges.endContainer.textContent.length) {
 			let prt1 = t_st.substring(0, t_no);
 			let prt2 = place_text + t_st.substring(t_no);
 			current_element.innerHTML = prt1;
 			prt2 = prt2.replace("&#10;&#13;", "\n");
-			console.log(prt1 + "\n" + prt2);
 			let temp_word = create_node(lent, prt2);
 			maed.insertBefore(temp_word, next_wrd);
 			words.splice(curr_wrd + 1, 0, temp_word);
@@ -162,7 +160,6 @@ function insert_text(event) {
 }
 
 function delete_text(event) {
-	console.log(event.getTargetRanges()[0]);
 	let range = event.getTargetRanges()[0];
 	let current_element = range.endContainer.parentElement;
 	let start = range.startContainer.parentElement,
@@ -188,6 +185,10 @@ function delete_text(event) {
 function delete_single_character(element, pos) {
 	let word_ind = search_words(element.id);
 	if (element.textContent.length <= 1) {
+		if (word_ind == 0 && words.length == 1) {
+			wrd1.textContent = "";
+			return;
+		}
 		element.remove();
 		if (word_ind == 0) {
 			let curr_word = words[word_ind + 1];
@@ -198,29 +199,46 @@ function delete_single_character(element, pos) {
 			t_range.setEnd(st_nd, 0);
 			sel_obj.removeAllRanges();
 			sel_obj.addRange(t_range);
+			wrd1 = words[0];
 		} else {
 			let curr_word = words[word_ind - 1];
 			words.splice(curr_word, 1);
-			let st_nd = curr_word.childNodes[0];
-			let t_range = document.createRange();
-			t_range.setStart(st_nd, curr_word.textContent.length);
-			t_range.setEnd(st_nd, curr_word.textContent.length);
-			sel_obj.removeAllRanges();
-			sel_obj.addRange(t_range);
+			try {
+				let st_nd = curr_word.childNodes[0];
+				let t_range = document.createRange();
+				t_range.setStart(st_nd, curr_word.textContent.length);
+				t_range.setEnd(st_nd, curr_word.textContent.length);
+				sel_obj.removeAllRanges();
+				sel_obj.addRange(t_range);
+			} catch (err) {
+			}
 		}
 		return;
 	} else {
 		let txt = element.textContent;
 		if (pos > txt.length)
 			return;
+		let ch = txt.charCodeAt(pos - 1);
+		let off_val = pos - 1;
 		txt = txt.substring(0, pos - 1) + txt.substring(pos);
-		element.innerText = txt;
+		if (ch == 160 || ch == "13" && word_ind != 0) {
+			element.remove();
+			words.splice(word_ind, 1);
+			txt = words[word_ind - 1].textContent + txt;
+			element = words[word_ind - 1];
+			off_val = element.textContent.length;
+		}
+		txt = txt.replace("\u0010", "\n");
+		txt = txt.replace("\u0013", "");
+		element.innerHTML = txt;
 		let st_nd = element.childNodes[0];
 		let t_range = document.createRange();
-		t_range.setStart(st_nd, pos - 1);
-		t_range.setEnd(st_nd, pos - 1);
+		t_range.setStart(st_nd, off_val);
+		t_range.setEnd(st_nd, off_val);
 		sel_obj.removeAllRanges();
 		sel_obj.addRange(t_range);
+		return;
+
 	}
 }
 
