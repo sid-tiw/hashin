@@ -210,8 +210,7 @@ function delete_single_character(element, pos) {
 				t_range.setEnd(st_nd, curr_word.textContent.length);
 				sel_obj.removeAllRanges();
 				sel_obj.addRange(t_range);
-			} catch (err) {
-			}
+			} catch (err) {}
 		}
 		return;
 	} else {
@@ -255,3 +254,9 @@ function select_scroll_1(e) {
 }
 
 maed.addEventListener('scroll', select_scroll_1, false);
+
+var sbmt_code = document.getElementById("sbmt-code");
+
+sbmt_code.addEventListener('click', event => {
+	console.log(maed.textContent);
+});

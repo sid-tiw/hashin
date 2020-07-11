@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html>
+{% extends "header.html" %}
+{% block body %}
 
-<head>
-	<meta charset="utf-8">
-</head>
-
-<body>
-	<link rel="stylesheet" href="submit.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css">
-	<div class="edtor">
-		<div class="hdredtr" id="hdredtr"></div>
-		<div readonly draggable="false" class="lnnum" id="lnnum">
-			<button class="b1">1</button>
-		</div>
-		<div class="maed" id="maed" spellcheck="false" contenteditable="true"></div>
+{% load static %}
+<link rel="stylesheet" href="{% static "/css/submit.css" %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css">
+<div class="edtor">
+	<div class="hdredtr" id="hdredtr"></div>
+	<div readonly draggable="false" class="lnnum" id="lnnum">
+		<button class="b1">1</button>
 	</div>
-</body>
-<script src="submit.js"> </script>
-
-</html>
+	<div class="maed" id="maed" spellcheck="false" contenteditable="true"></div>
+</div>
+<button type="submit" class="sbmt-code" id="sbmt-code">Submit</button>
+{% load static %}
+<script src="{% static "/js/submit.js" %}"> </script>
+{% endblock %}

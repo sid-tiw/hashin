@@ -86,3 +86,10 @@
 		font-family: 'Fira Code', monospace;
 	}
 }
+
+.sbmt-code {
+	width: 90px;
+	height: 30px;
+	margin-left: calc(30% - 45px);
+	margin-top: 2%;
+}
