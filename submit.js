@@ -71,27 +71,25 @@ function beforeinput_listener(event) {
 	event.preventDefault();
 	if (event.inputType == "insertText" || event.inputType == "insertParagraph") {
 		insert_text(event);
-	}
-	else{
+	} else if (event.inputType.substring(0, 6) == "delete") {
+		delete_text(event);
+	} else {
 		try {
-			let str = event.dataTransfer.getData("text");	
+			let str = event.dataTransfer.getData("text");
+			for (let i = 0; i < str.length; i++) {
+				if (str.charCodeAt(i) == 10) {
+					let st_nd = sel_obj.getRangeAt(0);
+					var evnt = new customInput("<br>", "insertParagraph", [st_nd]);
+					insert_text(evnt);
+				} else if (str.charCodeAt(i) == 13) {} else {
+					let st_nd = sel_obj.getRangeAt(0);
+					var evnt = new customInput(str.charAt(i), "insertText", [st_nd]);
+					insert_text(evnt);
+				}
+			}
 		} catch (error) {
 			return;
 		}
-		for(let i=0;i<str.length;i++){
-			if(str.charCodeAt(i) == 10) {
-				let st_nd = sel_obj.getRangeAt(0);
-				var evnt = new customInput("<br>", "insertParagraph", [st_nd]);
-				insert_text(evnt);
-			}
-			else if(str.charCodeAt(i) == 13) {}
-			else {
-				let st_nd = sel_obj.getRangeAt(0);
-				var evnt = new customInput(str.charAt(i), "insertText", [st_nd]);
-				insert_text(evnt);
-			}
-		}
-		console.log();
 	}
 }
 
@@ -164,7 +162,66 @@ function insert_text(event) {
 }
 
 function delete_text(event) {
+	console.log(event.getTargetRanges()[0]);
+	let range = event.getTargetRanges()[0];
+	let current_element = range.endContainer.parentElement;
+	let start = range.startContainer.parentElement,
+		end = current_element;
+	let s_o = range.startOffset,
+		e_o = range.endOffset;
+	if (start.isSameNode(end)) {
+		for (let i = e_o; i > s_o; i--)
+			delete_single_character(end, i);
+	} else {
+		let end_no = search_words(end.id);
+		let no_words = Math.abs(end_no - search_words(start.id) - 1);
+		for (let i = e_o; i > 0; i--)
+			delete_single_character(end, i);
+		for (let j = 0; j < no_words; j++)
+			for (let i = words[end_no - j - 1].textContent.length; i > 0; i--)
+				delete_single_character(words[end_no - j - 1], i);
+		for (let i = start.textContent.length; i > s_o; i--)
+			delete_single_character(end, i);
+	}
+}
 
+function delete_single_character(element, pos) {
+	let word_ind = search_words(element.id);
+	if (element.textContent.length <= 1) {
+		element.remove();
+		if (word_ind == 0) {
+			let curr_word = words[word_ind + 1];
+			words.splice(curr_word, 1);
+			let st_nd = curr_word.childNodes[0];
+			let t_range = document.createRange();
+			t_range.setStart(st_nd, 0);
+			t_range.setEnd(st_nd, 0);
+			sel_obj.removeAllRanges();
+			sel_obj.addRange(t_range);
+		} else {
+			let curr_word = words[word_ind - 1];
+			words.splice(curr_word, 1);
+			let st_nd = curr_word.childNodes[0];
+			let t_range = document.createRange();
+			t_range.setStart(st_nd, curr_word.textContent.length);
+			t_range.setEnd(st_nd, curr_word.textContent.length);
+			sel_obj.removeAllRanges();
+			sel_obj.addRange(t_range);
+		}
+		return;
+	} else {
+		let txt = element.textContent;
+		if (pos > txt.length)
+			return;
+		txt = txt.substring(0, pos - 1) + txt.substring(pos);
+		element.innerText = txt;
+		let st_nd = element.childNodes[0];
+		let t_range = document.createRange();
+		t_range.setStart(st_nd, pos - 1);
+		t_range.setEnd(st_nd, pos - 1);
+		sel_obj.removeAllRanges();
+		sel_obj.addRange(t_range);
+	}
 }
 
 function search_words(str) {
