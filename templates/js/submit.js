@@ -265,6 +265,7 @@ sbmt_code.addEventListener('click', event => {
 
 var lang_sel_label = document.getElementById("lang-sel-label");
 var lang_dropdown = document.getElementById("lang-dropdown");
+var lang_items = document.getElementsByClassName("lang-item");
 
 lang_sel_label.addEventListener('click', evnt => {
 	evnt.stopPropagation();
@@ -278,3 +279,14 @@ document.addEventListener('click', evnt => {
 	if (lang_dropdown.style.visibility == "visible")
 		lang_dropdown.style.visibility = "hidden";
 });
+
+for (let i = 0; i < lang_items.length; i++) {
+	lang_items[i].addEventListener('click', evnt => {
+		evnt.stopPropagation();
+		if (lang_dropdown.style.visibility == "visible") {
+			lang_dropdown.style.visibility = "hidden";
+			lang_sel_label.innerHTML = lang_items[i].innerHTML;
+			console.log(lang_sel_label.innerHTML);
+		}
+	});
+}
