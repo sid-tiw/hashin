@@ -4,8 +4,25 @@
 {% load static %}
 <link rel="stylesheet" href="{% static "/css/submit.css" %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css">
+<script src="https://kit.fontawesome.com/77910b5acc.js" crossorigin="anonymous"></script>
 <div class="edtor">
-	<div class="hdredtr" id="hdredtr"></div>
+	<div class="hdredtr" id="hdredtr">
+		<label for="file-inp" id="file-inp-label"><i class="fas fa-file-code"></i> upload...</label>
+		<input type="file" id="file-inp" name="file-inp">
+		<label for="problem-code" id="problem-code-label">pcode:</label>
+		<input type="text" id="problem-code" name="problem-code">
+		<label for="custom-test" id="custom-test-label"><input type="checkbox" id="custom-test" name="custom-test">custom-test</label>
+		<div class="lang-container" id="lang-container">
+		<label id="lang-sel-label">language</label>
+		<div class="lang-dropdown" id="lang-dropdown">
+			<button class="lang-item">C</button>
+			<button class="lang-item">C++17</button>
+			<button class="lang-item">C++11</button>
+			<button class="lang-item">Java</button>
+			<button class="lang-item">Python</button>
+		</div>
+		</div>
+	</div>
 	<div readonly draggable="false" class="lnnum" id="lnnum">
 		<button class="b1">1</button>
 	</div>

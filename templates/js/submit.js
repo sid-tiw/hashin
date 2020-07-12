@@ -260,3 +260,21 @@ var sbmt_code = document.getElementById("sbmt-code");
 sbmt_code.addEventListener('click', event => {
 	console.log(maed.textContent);
 });
+
+// language selector dropdown
+
+var lang_sel_label = document.getElementById("lang-sel-label");
+var lang_dropdown = document.getElementById("lang-dropdown");
+
+lang_sel_label.addEventListener('click', evnt => {
+	evnt.stopPropagation();
+	if (lang_dropdown.style.visibility == "hidden" || lang_dropdown.style.visibility == "")
+		lang_dropdown.style.visibility = "visible";
+	else if (lang_dropdown.style.visibility == "visible")
+		lang_dropdown.style.visibility = "hidden";
+});
+
+document.addEventListener('click', evnt => {
+	if (lang_dropdown.style.visibility == "visible")
+		lang_dropdown.style.visibility = "hidden";
+});

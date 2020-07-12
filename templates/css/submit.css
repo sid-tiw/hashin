@@ -10,7 +10,8 @@
 
 .hdredtr {
 	z-index: 2;
-	display: block;
+	display: flex;
+	flex-direction: row;
 	border: 1px solid;
 	border-radius: 8px 8px 0px 0px;
 	border-bottom: 0px;
@@ -105,8 +106,125 @@
 
 .sbmt-code {
 	z-index: 1;
-	width: 90px;
-	height: 30px;
+	width: 120px;
+	height: 40px;
 	margin-left: calc(30% - 45px);
+	background-color: white;
+	outline: none;
+	border: 1px solid black;
+	color: rgb(10, 93, 114);
+	border-radius: 6px 6px 6px 6px;
 	margin-top: 2%;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: medium;
+}
+
+.sbmt-code:hover {
+	animation-name: sbmt-hover;
+	animation-timing-function: ease-in-out;
+	animation-duration: 0.4s;
+	animation-delay: 0.1s;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+}
+
+@keyframes sbmt-hover {
+	0% {
+		background-color: white;
+		color: rgb(10, 93, 114);
+	}
+
+	100% {
+		background-color: rgb(10, 93, 114);
+		color: white;
+	}
+}
+
+#file-inp {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+
+#file-inp-label,
+#problem-code-label, #problem-code, #custom-test-label, #lang-sel-label, .lang-item {
+	margin-left: 7%;
+	cursor: pointer;
+	align-self: center;
+	font-size: large;
+	border: 1px solid rgb(1, 45, 56);
+	padding-left: 1%;
+	padding-right: 1%;
+	background-color: rgb(11, 65, 78);
+	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 2px 2px 2px 2px;
+}
+
+#problem-code {
+	margin-left: 0%;
+	border-left: none;
+	outline: none;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	width: 80px;
+}
+
+#problem-code-label {
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+#custom-test-label {
+	margin-left: 7%;
+	width: 120px;
+	padding-right: 2px;
+}
+
+#custom-test {
+	cursor: pointer;
+}
+
+#lang-sel {
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.lang-container {
+	display: flex;
+	flex-direction: column;
+	margin-left: 7%;
+	padding-top: 10px;
+	width: 15%;
+}
+
+.lang-dropdown {
+	visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	margin-top: 2.3%;
+	width: 120px;
+	margin-left: 0.35%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 100px;
+	border-radius: 0px 4px 4px 4px;
+	border-left: 1px rgb(1, 45, 56) solid;
+	border-top: 2px rgb(1, 45, 56) solid;
+}
+
+#lang-sel-label {
+	padding-left: 2%;
+	padding-right: 3%;
+	width: 120px;
+	text-align: center;
+}
+
+.lang-item {
+	width: 120px;
+	outline: none;
 }
