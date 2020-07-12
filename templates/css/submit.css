@@ -1,23 +1,28 @@
 .edtor {
+	z-index: 1;
 	margin-left: 5%;
-	margin-top: 5%;
+	margin-top: 2%;
 	display: grid;
-	grid-template-columns: repeat(10, 7%);
+	grid-template-columns: repeat(60, 1%);
 	grid-row-gap: 0;
 	grid-auto-rows: minmax(55px, auto);
 }
 
 .hdredtr {
+	z-index: 2;
 	display: block;
 	border: 1px solid;
 	border-radius: 8px 8px 0px 0px;
 	border-bottom: 0px;
 	background-color: rgb(212, 222, 235);
-	grid-column: 1 / 11;
+	grid-column: 1 / 61;
 	grid-row: 1/2;
+	box-shadow: 0px 2px 2px 0.4px;
+	background-color: rgb(10, 93, 114);
 }
 
 .maed {
+	z-index: 1;
 	font-size: large;
 	font-family: monospace;
 	resize: none;
@@ -26,20 +31,24 @@
 	border-radius: 0px 0px 0px 0px;
 	border-left: none;
 	white-space: nowrap;
-	grid-column: 2 / 11;
+	grid-column: 5 / 61;
 	grid-row: 2 / 10;
 	vertical-align: top;
 	height: 440px;
 	width: calc(100% - 1px);
 	overflow: auto;
+	background-color: rgb(11, 65, 78);
+	caret-color: red;
 }
 
 .maed::selection {
-	color: white;
-	background-color: green;
+	z-index: 1;
+	color: red;
+	background-color: rgba(18, 228, 18, 0.1);
 }
 
 .lnnum {
+	z-index: 4;
 	display: flex;
 	flex-direction: column;
 	border: 1px solid;
@@ -52,20 +61,24 @@
 	font-family: monospace;
 	border-radius: 0px 0px 0px 8px;
 	overflow: hidden;
-	grid-column: 1 / 2;
+	grid-column: 1 / 5;
 	grid-row: 2 / 10;
+	background-color: rgb(10, 93, 114);
 }
 
 .lnnum::-webkit-scrollbar {
+	z-index: 1;
 	width: 0px;
 }
 
 .lnnum::selection {
+	z-index: 1;
 	color: none;
 	background: none;
 }
 
 .b1 {
+	z-index: 1;
 	font-size: large;
 	background-color: transparent;
 	border: none;
@@ -73,12 +86,15 @@
 }
 
 .words::selection {
-	color: white;
-	background-color: green;
+	color: red;
+	background-color: rgba(159, 7, 230, 0.4);
 }
 
 .words {
+	z-index: 1;
 	font-family: 'Fira Code', monospace;
+	background-color: transparent;
+	caret-color: red;
 }
 
 @supports (font-variation-settings: normal) {
@@ -88,6 +104,7 @@
 }
 
 .sbmt-code {
+	z-index: 1;
 	width: 90px;
 	height: 30px;
 	margin-left: calc(30% - 45px);

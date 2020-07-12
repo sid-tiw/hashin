@@ -14,13 +14,11 @@
 
 <body>
 	<header>
-		{% load static %}
-		<!-- <img src="{% static "/images/svg/logo.svg" %}" class="lgimg"> -->
-		<button class="lname frstprt btn-menu"><a href="/" style="color: black;">Hash</a></button>
+		<button class="lname frstprt btn-menu"><a href="/" style="color: rgb(255, 208, 0);">Hash</a></button>
 		<button class="lname scndprt btn-menu"><a href="/">in</a></button>
 		<div class="menu-item-container first-menu-item-cont" id="problem-container">
-			<button class="menu-item first-menu-item btn-menu"><span style="color: rgb(241, 93, 113);">P</span>roblem
-				<span style="color: rgb(241, 93, 113);">S</span>olving<span class="menu-item-after"
+			<button class="menu-item first-menu-item btn-menu"><span">P</span>roblem
+				<span>S</span>olving<span class="menu-item-after"
 					id="problem-item-after">&#9662;</span></button>
 			<ul class="problem-dropdown" id="problem-dropdown">
 				<li class="li-menu-items first-li-menu-item li-problem"><button class="corres-li-menu-text"
@@ -38,7 +36,7 @@
 			</ul>
 		</div>
 		<div class="menu-item-container" id="computing-container">
-			<button class="menu-item btn-menu"><span style="color: rgb(241, 93, 113);">C</span>omputing<span
+			<button class="menu-item btn-menu"><span>C</span>omputing<span
 					class="menu-item-after">&#9662;</span></button>
 			<ul class="computing-dropdown" id="computing-dropdown">
 				<li class="li-menu-items first-li-menu-item li-computing"><button class="corres-li-menu-text"
@@ -50,7 +48,7 @@
 			</ul>
 		</div>
 		<div class="menu-item-container" id="linux-container">
-			<button class="menu-item btn-menu"><span style="color: rgb(241, 93, 113);">L</span>inux<span
+			<button class="menu-item btn-menu"><span>L</span>inux<span
 					class="menu-item-after">&#9662;</span></button>
 			<ul class="linux-dropdown" id="linux-dropdown">
 				<li class="li-menu-items first-li-menu-item li-linux"><button class="corres-li-menu-text"
@@ -60,14 +58,14 @@
 			</ul>
 		</div>
 		<div class="menu-item-container" id="crypto-container">
-			<button class="menu-item btn-menu"><span style="color: rgb(241, 93, 113);">C</span>ryptography<span
+			<button class="menu-item btn-menu"><span">C</span>ryptography<span
 					class="menu-item-after">&#9662;</span></button>
 			<ul class="crypto-dropdown" id="crypto-dropdown">
 				<li class="li-menu-items first-li-menu-item li-crypto"><button class="corres-li-menu-text"
 						onclick="location.href='#';">Hacking</button></li>
-				<li class="li-menu-items first-li-menu-item li-crypto"><button class="corres-li-menu-text"
+				<li class="li-menu-items li-crypto"><button class="corres-li-menu-text"
 						onclick="location.href='#';">Algebra</button></li>
-				<li class="li-menu-items first-li-menu-item li-crypto"><button class="corres-li-menu-text"
+				<li class="li-menu-items li-crypto"><button class="corres-li-menu-text"
 						onclick="location.href='#';">Hacking Tools</button></li>
 				<li class="li-menu-items last-li-menu-item li-crypto"><button class="corres-li-menu-text"
 						onclick="location.href='#';">Crypto Theory</button></li>
@@ -81,7 +79,7 @@
 			<button class="login-button button-user" onclick="location.href='/logout'">Logout</button>
 			{% else %}
 			<div class="user_image_container" style="display: block;">
-				<img {{ img_link }} width="40px" class="user_image">
+				<img {{ img_link }} width="25px" class="user_image">
 			</div>
 			<div style="display: inline;">
 				<button class="login-button button-user" onclick="location.href='/login'">Login</button>|<!--

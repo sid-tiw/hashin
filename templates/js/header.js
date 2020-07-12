@@ -26,46 +26,47 @@ var click_problem = false,
 
 for (let i = 0; i < li_menu_items.length; i++) {
     li_menu_items.item(i).addEventListener('mouseover', event => {
-        li_menu_items.item(i).style.backgroundColor = "rgb(241, 93, 113)";
+        li_menu_items.item(i).style.backgroundColor = "cornflowerblue";
         corres_li_menu_text.item(i).style.color = "white";
     });
     li_menu_items.item(i).addEventListener('mouseout', event => {
         li_menu_items.item(i).style.backgroundColor = "white";
-        corres_li_menu_text.item(i).style.color = "rgb(241, 93, 113)";
+        corres_li_menu_text.item(i).style.color = "cornflowerblue";
     });
 }
 
 problem_container.addEventListener('mouseover', event => {
-    problem_dropdown.style.visibility = "visible";
+    problem_dropdown.className = " extra-class";
 });
 
 problem_container.addEventListener('mouseout', event => {
-    problem_dropdown.style.visibility = "hidden";
+    problem_dropdown.className = "problem-dropdown";
 });
 
 computing_container.addEventListener('mouseover', event => {
-    computing_dropdown.style.visibility = "visible";
+    computing_dropdown.className = "extra-class";
 });
 
 computing_container.addEventListener('mouseout', event => {
-    computing_dropdown.style.visibility = "hidden";
+    computing_dropdown.className = "computing-dropdown";
 });
 
 linux_container.addEventListener('mouseover', event => {
-    linux_dropdown.style.visibility = "visible";
+    linux_dropdown.className = "extra-class";
 });
 
 linux_container.addEventListener('mouseout', event => {
-    linux_dropdown.style.visibility = "hidden";
+    linux_dropdown.className = "linux-dropdown";
 });
 
 crypto_container.addEventListener('mouseover', event => {
-    crypto_dropdown.style.visibility = "visible";
+    crypto_dropdown.className = "extra-class";
 });
 
 crypto_container.addEventListener('mouseout', event => {
-    crypto_dropdown.style.visibility = "hidden";
+    crypto_dropdown.className = "crypto-dropdown";
 });
+
 
 for (let i = 0; i < corres_li_menu_text.length; i++) {
     corres_li_menu_text.item(i).addEventListener('click', event => {
