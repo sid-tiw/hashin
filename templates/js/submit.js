@@ -310,18 +310,17 @@ sbmt_code.addEventListener('click', evnt => {
 		return cookieValue;
 	}
 	const csrftoken = getCookie('csrftoken');
-	let code = file_inp.files[0];
+	let code_file = file_inp.files[0];
+	let code_editor = maed.textContent;
 	let is_file = true;
-	if (!code) {
-		code = maed.textContent;
+	if (!code)
 		is_file = false;
-	}
 	let pcode = document.getElementById('problem-code').value.trim();
 	let ctest = document.getElementById('custom-test').checked;
 	let lang = lang_sel_label.innerHTML.toLowerCase();
 
-	let field_values = [csrftoken, code, is_file, pcode, ctest, lang];
-	let field_names = ["csrf_token", "code", "is_file", "pcode", "ctest", "lang"];
+	let field_values = [csrftoken, code_file, code_editor, is_file, pcode, ctest, lang];
+	let field_names = ["csrf_token", "code_file", "code_editor", "is_file", "pcode", "ctest", "lang"];
 
 	let virt_form = document.getElementById('virt-form');
 	virt_form.method = "post";
