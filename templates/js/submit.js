@@ -291,7 +291,7 @@ for (let i = 0; i < lang_items.length; i++) {
 }
 
 var sbmt_code = document.getElementById("sbmt-code");
-var file_inp = document.getElementById("file-inp");
+var file_inp = document.getElementById("file_inp");
 
 sbmt_code.addEventListener('click', evnt => {
 	function getCookie(name) {
@@ -309,18 +309,17 @@ sbmt_code.addEventListener('click', evnt => {
 		}
 		return cookieValue;
 	}
-	const csrftoken = getCookie('csrftoken');
 	let code_file = file_inp.files[0];
 	let code_editor = maed.textContent;
 	let is_file = true;
-	if (!code)
+	if (!code_file)
 		is_file = false;
 	let pcode = document.getElementById('problem-code').value.trim();
 	let ctest = document.getElementById('custom-test').checked;
 	let lang = lang_sel_label.innerHTML.toLowerCase();
 
-	let field_values = [csrftoken, code_file, code_editor, is_file, pcode, ctest, lang];
-	let field_names = ["csrf_token", "code_file", "code_editor", "is_file", "pcode", "ctest", "lang"];
+	let field_values = [code_editor, is_file, pcode, ctest, lang];
+	let field_names = ["code_editor", "is_file", "pcode", "ctest", "lang"];
 
 	let virt_form = document.getElementById('virt-form');
 	virt_form.method = "post";
@@ -328,14 +327,15 @@ sbmt_code.addEventListener('click', evnt => {
 
 	for (let i = 0; i < field_names.length; i++) {
 		let temp_field = document.createElement('input');
-		temp_field.type = "hidden";
+		temp_field.type = "text";
+		temp_field.style.visibility = "hidden";
 		temp_field.name = field_names[i];
 		temp_field.value = field_values[i];
 
 		virt_form.appendChild(temp_field);
 	}
 
-	document.body.appendChild(virt_form);
+	virt_form.appendChild(file_inp);
 	virt_form.submit(virt_form);
 
 	// var request = new XMLHttpRequest();
