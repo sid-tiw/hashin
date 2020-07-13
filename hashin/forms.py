@@ -2,9 +2,9 @@ from django import forms
 
 
 class codeForm(forms.Form):
-    codeFile = forms.FileField(allow_empty_file=True)
-    codeEditor = forms.TextInput()
-    isFile = forms.BooleanField()
+    file_inp = forms.FileField()
+    code_editor = forms.TextInput()
+    is_file = forms.TextInput()
     pcode = forms.TextInput()
     lang = forms.TextInput()
-    ctest = forms.BooleanField()
+    ctest = forms.TextInput()
