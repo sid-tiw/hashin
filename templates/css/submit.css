@@ -141,13 +141,13 @@
 	}
 }
 
-#file-inp {
+#file_inp {
 	position: absolute;
 	opacity: 0;
 	z-index: -1;
 }
 
-#file-inp-label,
+#file_inp_label,
 #problem-code-label, #problem-code, #custom-test-label, #lang-sel-label, .lang-item {
 	margin-left: 7%;
 	cursor: pointer;
