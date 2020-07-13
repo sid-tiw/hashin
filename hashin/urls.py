@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('authentication.urls')),
     path('', views.homepage, name="home"),
-    path('submit/', views.submit, name="submit")
+    path('submit/', views.submit, name="submit"),
+    path('submissions/', views.submissions, name="submissions"),
 ]

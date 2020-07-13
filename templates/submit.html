@@ -5,15 +5,18 @@
 <link rel="stylesheet" href="{% static "/css/submit.css" %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css">
 <script src="https://kit.fontawesome.com/77910b5acc.js" crossorigin="anonymous"></script>
+<form id="virt-form" style="visibility: hidden;">
+	{% csrf_token %}
+</form>
 <div class="edtor">
-	<div class="hdredtr" id="hdredtr">
+	<div class="hdredtr" id="hdredtr">{% csrf_token %}
 		<label for="file-inp" id="file-inp-label"><i class="fas fa-file-code"></i> upload...</label>
 		<input type="file" id="file-inp" name="file-inp">
 		<label for="problem-code" id="problem-code-label">pcode:</label>
 		<input type="text" id="problem-code" name="problem-code">
 		<label for="custom-test" id="custom-test-label"><input type="checkbox" id="custom-test" name="custom-test">custom-test</label>
 		<div class="lang-container" id="lang-container">
-		<label id="lang-sel-label">language</label>
+		<label id="lang-sel-label">C++17</label>
 		<div class="lang-dropdown" id="lang-dropdown">
 			<button class="lang-item">C</button>
 			<button class="lang-item">C++17</button>

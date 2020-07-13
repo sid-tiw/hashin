@@ -286,7 +286,62 @@ for (let i = 0; i < lang_items.length; i++) {
 		if (lang_dropdown.style.visibility == "visible") {
 			lang_dropdown.style.visibility = "hidden";
 			lang_sel_label.innerHTML = lang_items[i].innerHTML;
-			console.log(lang_sel_label.innerHTML);
 		}
 	});
 }
+
+var sbmt_code = document.getElementById("sbmt-code");
+var file_inp = document.getElementById("file-inp");
+
+sbmt_code.addEventListener('click', evnt => {
+	function getCookie(name) {
+		let cookieValue = null;
+		if (document.cookie && document.cookie !== '') {
+			const cookies = document.cookie.split(';');
+			for (let i = 0; i < cookies.length; i++) {
+				const cookie = cookies[i].trim();
+				// Does this cookie string begin with the name we want?
+				if (cookie.substring(0, name.length + 1) === (name + '=')) {
+					cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+					break;
+				}
+			}
+		}
+		return cookieValue;
+	}
+	const csrftoken = getCookie('csrftoken');
+	let code = file_inp.files[0];
+	let is_file = true;
+	if (!code) {
+		code = maed.textContent;
+		is_file = false;
+	}
+	let pcode = document.getElementById('problem-code').value.trim();
+	let ctest = document.getElementById('custom-test').checked;
+	let lang = lang_sel_label.innerHTML.toLowerCase();
+
+	let field_values = [csrftoken, code, is_file, pcode, ctest, lang];
+	let field_names = ["csrf_token", "code", "is_file", "pcode", "ctest", "lang"];
+
+	let virt_form = document.getElementById('virt-form');
+	virt_form.method = "post";
+	virt_form.action = "/submissions/";
+
+	for (let i = 0; i < field_names.length; i++) {
+		let temp_field = document.createElement('input');
+		temp_field.type = "hidden";
+		temp_field.name = field_names[i];
+		temp_field.value = field_values[i];
+
+		virt_form.appendChild(temp_field);
+	}
+
+	document.body.appendChild(virt_form);
+	virt_form.submit(virt_form);
+
+	// var request = new XMLHttpRequest();
+	// request.open("POST", "/submissions/");
+	// request.setRequestHeader("X-CSRFToken", csrftoken);
+	// request.send("code=" + file);
+	// window.location.replace("/submissions/");
+});

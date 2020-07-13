@@ -29,3 +29,9 @@ def submit(request):
     # dict_get = request.GET
     # if "pcode" in dict_get.keys():
     return render(request, "submit.html", init_login(request))
+
+
+def submissions(request):
+    if request.method == 'POST':
+        request.FILES[0];
+    return render(request, "submissions.html", init_login(request))
