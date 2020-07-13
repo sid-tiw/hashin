@@ -1,7 +1,10 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.utils.safestring import SafeString
+from .forms import codeForm
+from .extensions import file_extensions
 import string
+from time import time
 
 
 def init_login(request):
@@ -33,5 +36,21 @@ def submit(request):
 
 def submissions(request):
     if request.method == 'POST':
-        request.FILES[0];
-    return render(request, "submissions.html", init_login(request))
+        if request.user.is_authenticated:
+            cForm = codeForm(request.POST, request.FILES)
+            if cForm.is_valid():
+                code_file = request.FILES["file_inp"]
+                
+                # Check for problem code
+
+                full_path = "./users/" + request.user.username + "/submissions/" + \
+                    request.POST['pcode'] + \
+                    str(time()) + file_extensions[request.POST['lang']]
+                
+                with open(full_path, "wb+") as destination:
+                    for part in code_file.chunks():
+                        destination.write(part)
+
+                return render(request, "submissions.html", init_login(request))
+        else:
+            return redirect("login")
