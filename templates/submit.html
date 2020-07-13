@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static "/css/submit.css" %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css">
 <script src="https://kit.fontawesome.com/77910b5acc.js" crossorigin="anonymous"></script>
-<form id="virt-form" style="visibility: hidden;">
+<form enctype="multipart/form-data" id="virt-form" style="visibility: hidden;">
 	{% csrf_token %}
 </form>
 <div class="edtor">
